@@ -186,6 +186,5 @@ def run_agent_for_input(user_input: str) -> list[str]:
             continue
 
     # Fallback to just the raw string
-    return [result.strip()]
-
+    return [result.strip()] if result.strip() else ["⚠️ Empty response from agent."]
 
