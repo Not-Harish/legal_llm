@@ -9,14 +9,16 @@ CORS(app)
 
 @app.route("/api/send-message", methods=["POST"])
 def send_message():
-    print("🔥 Flask route hit!")
     data = request.json
     user_input = data.get("message", "")
     responses = run_agent_for_input(user_input)
 
+    print("📤 Returning:", responses)
+
     return jsonify([
-        {"message": str(msg), "timestamp": ""} for msg in responses
+        { "message": str(msg), "timestamp": "" } for msg in responses
     ])
+
 
 
 @app.route("/api/generate-document", methods=["POST"])
